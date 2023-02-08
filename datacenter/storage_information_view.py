@@ -9,7 +9,7 @@ from django.utils.timezone import localtime
 
 def storage_information_view(request):
     non_closed_visits = []
-    for visit in Visit.objects.filter(leaved_at=None):
+    for visit in Visit.objects.filter(leaved_at__isnull=True):
       non_closed_visit = {
       'who_entered': visit.passcard.owner_name,
       'is_strange': is_visit_long(visit),

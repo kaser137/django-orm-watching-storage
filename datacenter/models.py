@@ -1,12 +1,9 @@
-import datetime
 from django.db import models
 from django.utils.timezone import localtime
 
 
 def get_duration(visit):
-  time_zone = datetime.timezone(datetime.timedelta(hours=3))
-  duration = localtime(visit.leaved_at) - visit.entered_at.astimezone(time_zone)
-  return duration
+  return localtime(visit.leaved_at) - localtime(visit.entered_at)
 
 def is_visit_long(visit, minutes=60):
       duration = get_duration(visit)

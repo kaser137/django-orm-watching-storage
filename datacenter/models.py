@@ -5,6 +5,7 @@ from django.utils.timezone import localtime
 def get_duration(visit):
   return localtime(visit.leaved_at) - localtime(visit.entered_at)
 
+
 def is_visit_long(visit, minutes=60):
       duration = get_duration(visit)
       if duration.seconds > minutes*60:
@@ -19,12 +20,14 @@ def format_duration(duration):
   format_duration = f'{hours}h {minutes}min'
   return format_duration
 
+
 class Passcard(models.Model):
     is_active = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now=True)
     passcode = models.CharField(max_length=200, unique=True)
     owner_name = models.CharField(max_length=255)
 
+  
     def __str__(self):
         if self.is_active:
             return self.owner_name

@@ -8,6 +8,13 @@ def get_duration(visit):
   duration = localtime(visit.leaved_at) - visit.entered_at.astimezone(time_zone)
   return duration
 
+def is_visit_long(visit, minutes=60):
+      duration = get_duration(visit)
+      if duration.seconds > minutes*60:
+        return True
+      return False 
+  
+
 def format_duration(duration):
   seconds = duration.total_seconds()
   hours = int(seconds // 3600)
@@ -34,13 +41,6 @@ class Visit(models.Model):
     leaved_at = models.DateTimeField(null=True)
 
   
-    def is_visit_long(self, minutes=60):
-      duration = get_duration(self)
-      if duration.seconds > minutes*60:
-        return True
-      return False 
-
-      
     def __str__(self):
         return '{user} entered at {entered} {leaved}'.format(
             user=self.passcard.owner_name,

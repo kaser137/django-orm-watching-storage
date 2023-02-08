@@ -35,10 +35,7 @@ class Visit(models.Model):
 
   
     def is_visit_long(self, minutes=60):
-      if self.leaved_at:
-        duration = self.leaved_at - self.entered_at
-      else:
-        duration = localtime() - self.entered_at
+      duration = get_duration(self)
       if duration.seconds > minutes*60:
         return True
       return False 

@@ -12,6 +12,7 @@ PORT='5400'
 NAME='checkexample'
 USER='foruserexample'
 PASSWORD='example'
+ALLOWED_HOSTS=['localhost', '127.0.0.1', 'checkpoint.devman.org']
 DEBUG=True
 SECRET_KEY='EXAMPLE'
 ```

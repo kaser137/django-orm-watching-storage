@@ -12,7 +12,7 @@ PORT='5400'
 NAME='checkexample'
 USER='foruserexample'
 PASSWORD='example'
-ALLOWED_HOSTS=['localhost', '127.0.0.1', 'checkpoint.devman.org']
+ALLOWED_HOSTS=['localhost', '127.0.0.1', 'my.example.org']
 DEBUG=True
 SECRET_KEY='EXAMPLE'
 ```
@@ -21,6 +21,7 @@ SECRET_KEY='EXAMPLE'
 The first six lines are settings for database.
 DEBUG has to take just boolean values (`True`/`False`).
 SECRET_KEY is secret key for site.
+Variables ALLOWED_HOSTS, DEBUG and SECRET_KEY have default settings. 
 
 Python3 should already be installed. Then use pip (or pip3, if there is a conflict with Python2) to install dependencies:
 ```python
